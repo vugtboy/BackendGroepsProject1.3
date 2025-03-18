@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>GroepsProject1._3Backend.WebApi</RootNamespace>
+    <UserSecretsId>8e5b79f3-9504-4bfe-8918-575d9d19e2d2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
