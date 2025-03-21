@@ -1,5 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+
+using Microsoft.AspNetCore.Mvc;       
+using System;                      
+using System.Collections.Generic;    
+using System.Threading.Tasks;         
 namespace GroepsProject1._3Backend.WebApi.Controllers
 {
     [ApiController]
@@ -15,36 +20,47 @@ namespace GroepsProject1._3Backend.WebApi.Controllers
         }
 
         [HttpGet("GetAllAppointments")]
-        public async Task<IEnumerable<Appointment>> GetAllAppointmentsAsync()
+        public async Task<IEnumerable<Appointment>> GetAllAppointments(Guid userId)
         {
-            //todo userId ophalen
-            string userId = null;
+            //TODO: userId ophalen
+
             return await _repository.GetAllAppointmentsAsync(userId);
         }
 
         [HttpPost("CreateAppointment")]
-        public async Task<ActionResult> CreateAppointmentAsync(Appointment appointment)
+        public async Task<ActionResult> CreateAppointment(Appointment appointment)
         {
             await _repository.CreateAppointmentAsync(appointment);
-            return CreatedAtAction(nameof(GetAppointmentAsync), new { id = appointment.Id });
+
+            var createdAppointment = await _repository.GetAppointmentAsync(appointment.Id);
+            // Als de afspraak niet is aangemaakt een foutmelding geven
+            if (createdAppointment == null)
+            {
+                return BadRequest("Ja, mislukt, de afspraak is niet goed aangemaakt, pipo :P");
+            }
+            //Goed response teruggeven als het gelukt is
+            else
+            {
+                return CreatedAtAction(nameof(GetAppointment), new { appointmentId = appointment.Id }, appointment);
+            }           
         }
 
-        //todo actionresult van maken
         [HttpPut("SaveAppointment")]
-        public async Task SaveAppointmentAsync(Appointment appointment)
-        {
-            _repository.UpdateAppointmentAsync(appointment);
+        public async Task<ActionResult> SaveAppointment(Appointment appointment)
+        {            
+            await _repository.UpdateAppointmentAsync(appointment);
+            return Created();
         }
 
-        //todo actionresult van maken
-        [HttpDelete("DeleteAllAppointment")]
-        public async Task DeleteAppointmentAsync(string appointmentId)
+        [HttpDelete("DeleteAppointment")]
+        public async Task<ActionResult> DeleteAppointment(Guid appointmentId)
         {
-            _repository.DeleteAppointmentAsync(appointmentId);
+            await _repository.DeleteAppointmentAsync(appointmentId);
+            return NoContent();
         }
 
         [HttpGet("GetAppointment")]
-        public async Task<Appointment> GetAppointmentAsync(string appointmentId)
+        public async Task<Appointment?> GetAppointment(Guid appointmentId)
         {
             return await _repository.GetAppointmentAsync(appointmentId);
         }

@@ -2,10 +2,10 @@
 {
     public class Appointment
     {
-        public string Id { get; set; }
-        public DateOnly Date { get; set; }
+        public Guid Id { get; set; }
+        public DateTime Date { get; set; }
         public string Name { get; set; }
         public int StickerId { get; set; }
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

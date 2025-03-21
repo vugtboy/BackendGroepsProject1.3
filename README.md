@@ -1,4 +1,5 @@
 # BackendGroepsProject1.3
+<<<<<<< Updated upstream
 voor de localDb database aan te maken + de conectionstring:   
 "SqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=MedicalHospital2226884;Integrated Security=True;" voor in je usersecrets
 eerst database met deze naam:MedicalHospital2226884 aanmaken, mag ook een andere zijn, let dan op de connectionstring, zo heet hij bij mij in ieder geval.
@@ -9,12 +10,24 @@ USE [MedicalHospital2226884]
 GO
 
 /****** Object:  Table [dbo].[Info]    Script Date: 21/03/2025 19:57:38 ******/
+=======
+om een database aan te maken met daarin de juiste objecten:
+Eerst een database aanmaken  genaamt: MedicalHospital2226884 dat is hoe de database bij mij heet, wil je een andere naam eraan geven, wat ik begrijp, houdt dan rekening met de connection string: "SqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=MedicalHospital2226884;Integrated Security=True;"
+(Die in de users secrets, mocht je eeb andere naam hebben dan ook daar aanpassen)
+
+Voor de SQL database aanmaken dus:
+USE [MedicalHospital2226884]
+GO
+
+/****** Object:  Table [dbo].[Appointment]    Script Date: 21/03/2025 19:57:22 ******/
+>>>>>>> Stashed changes
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+<<<<<<< Updated upstream
 CREATE TABLE [dbo].[Info](
 	[userId] [uniqueidentifier] NOT NULL,
 	[Name] [nvarchar](25) NOT NULL,
@@ -23,6 +36,14 @@ CREATE TABLE [dbo].[Info](
 	[BirthDay] [date] NULL,
 	[AvatarId] [int] NULL,
 	[Id] [uniqueidentifier] NOT NULL,
+=======
+CREATE TABLE [dbo].[Appointment](
+	[Name] [nvarchar](100) NOT NULL,
+	[Date] [date] NULL,
+	[StickerId] [int] NULL,
+	[Id] [uniqueidentifier] NOT NULL,
+	[userId] [uniqueidentifier] NOT NULL,
+>>>>>>> Stashed changes
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -57,19 +78,34 @@ GO
 USE [MedicalHospital2226884]
 GO
 
+<<<<<<< Updated upstream
 /****** Object:  Table [dbo].[Appointment]    Script Date: 21/03/2025 19:57:22 ******/
+=======
+/****** Object:  Table [dbo].[Info]    Script Date: 21/03/2025 19:57:38 ******/
+>>>>>>> Stashed changes
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+<<<<<<< Updated upstream
 CREATE TABLE [dbo].[Appointment](
 	[Name] [nvarchar](100) NOT NULL,
 	[Date] [date] NULL,
 	[StickerId] [int] NULL,
 	[Id] [uniqueidentifier] NOT NULL,
 	[userId] [uniqueidentifier] NOT NULL,
+=======
+CREATE TABLE [dbo].[Info](
+	[userId] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](25) NOT NULL,
+	[NameDocter] [nvarchar](25) NOT NULL,
+	[Route] [bit] NOT NULL,
+	[BirthDay] [date] NULL,
+	[AvatarId] [int] NULL,
+	[Id] [uniqueidentifier] NOT NULL,
+>>>>>>> Stashed changes
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -78,8 +114,11 @@ PRIMARY KEY CLUSTERED
 GO
 
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 CREATE SCHEMA [auth]
 
 GO
@@ -244,6 +283,7 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [auth].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
 GO
+<<<<<<< Updated upstream
 importeren naar postman:
 {
 	"info": {

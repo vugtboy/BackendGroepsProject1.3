@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var sqlConnectionString = builder.Configuration["SqlConnectionString"];
 builder.Services.AddTransient<IInfoRepository, InfoRepository>(o => new InfoRepository(sqlConnectionString));
+builder.Services.AddTransient<IAppointmentRepository, AppointmentRepository>(o => new AppointmentRepository(sqlConnectionString));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
