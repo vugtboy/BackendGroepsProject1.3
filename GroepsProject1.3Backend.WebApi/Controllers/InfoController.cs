@@ -9,17 +9,24 @@ namespace GroepsProject1._3Backend.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class InfoController : ControllerBase
+    public class AppointmentController : ControllerBase
     {
 
+<<<<<<< Updated upstream
         private readonly IInfoRepository _repository;
         private readonly IAuthenticationService _authentication;
         public InfoController(IInfoRepository repository, IAuthenticationService authentication)
+=======
+        private readonly IAppointmentRepository _repository;
+        private readonly IAuthenticationService _authentication;
+        public AppointmentController(IAppointmentRepository repository, IAuthenticationService authentication)
+>>>>>>> Stashed changes
         {
             _repository = repository;
             _authentication = authentication;
         }
 
+<<<<<<< Updated upstream
         [HttpGet("GetInfo")]
         public async Task<IEnumerable<Info>> GetInfo()
         {
@@ -34,6 +41,22 @@ namespace GroepsProject1._3Backend.WebApi.Controllers
             await _repository.CreateInfoAsync(info);
 
             var createdAppointment = await _repository.GetInfoAsync(info.userId);
+=======
+        [HttpGet("GetAllAppointments")]
+        public async Task<IEnumerable<Appointment>> GetAllAppointments()
+        {
+            Guid userId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
+            return await _repository.GetAllAppointmentsAsync(userId);
+        }
+
+        [HttpPost("CreateAppointment")]
+        public async Task<ActionResult> CreateAppointment(Appointment appointment)
+        {
+            appointment.UserId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
+            await _repository.CreateAppointmentAsync(appointment);
+
+            var createdAppointment = await _repository.GetAppointmentAsync(appointment.Id);
+>>>>>>> Stashed changes
             // Als de afspraak niet is aangemaakt een foutmelding geven
             if (createdAppointment == null)
             {

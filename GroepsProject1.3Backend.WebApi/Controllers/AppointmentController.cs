@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 using GroepsProject1._3Backend.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;       
 using System;                      
@@ -25,10 +28,16 @@ namespace GroepsProject1._3Backend.WebApi.Controllers
 
         [HttpGet("GetAllAppointments")]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public async Task<IEnumerable<Appointment>> GetAllAppointmentsAsync()
         {
             //todo userId ophalen
             string userId = null;
+=======
+        public async Task<IEnumerable<Appointment>> GetAllAppointments()
+        {
+            Guid userId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
+>>>>>>> Stashed changes
 =======
         public async Task<IEnumerable<Appointment>> GetAllAppointments()
         {

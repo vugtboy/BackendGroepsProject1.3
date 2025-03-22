@@ -8,9 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Add services to the container.
 var sqlConnectionString = builder.Configuration["SqlConnectionString"];
 builder.Services.AddTransient<IInfoRepository, InfoRepository>(o => new InfoRepository(sqlConnectionString));
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 builder.Services.AddControllers();

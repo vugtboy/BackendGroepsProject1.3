@@ -1,7 +1,10 @@
 # BackendGroepsProject1.3
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
  
 =======
+=======
+>>>>>>> Stashed changes
 om een database aan te maken met daarin de juiste objecten:
 Eerst een database aanmaken  genaamt: MedicalHospital2226884 dat is hoe de database bij mij heet, wil je een andere naam eraan geven, wat ik begrijp, houdt dan rekening met de connection string: "SqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=MedicalHospital2226884;Integrated Security=True;"
 (Die in de users secrets, mocht je eeb andere naam hebben dan ook daar aanpassen)
