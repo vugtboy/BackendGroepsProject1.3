@@ -7,156 +7,316 @@
 	},
 	"item": [
 		{
-			"name": "CreateNewAppointment",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594e\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"StickerId\": 1,\r\n  \"UserId\": \"a5c9ed6d-874e-4c63-aea7-748b5708494c\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "CreateNewAppointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594b\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/Appointment/CreateAppointment",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Appointment",
+								"CreateAppointment"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base_url_domain}}/Appointment/CreateAppointment",
-					"host": [
-						"{{base_url_domain}}"
-					],
-					"path": [
-						"Appointment",
-						"CreateAppointment"
-					]
+				{
+					"name": "GetAppointment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_domain}}/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594e",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Appointment",
+								"GetAppointment",
+								""
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllAppointments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/Appointment/GetAllAppointments",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Appointment",
+								"GetAllAppointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveAppointment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594e\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"GerbenHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/Appointment/SaveAppointment",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Appointment",
+								"SaveAppointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletAppointment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594e",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Appointment",
+								"DeleteAppointment",
+								""
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594e"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "GetAppointment",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url_domain}}/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594e",
-					"host": [
-						"{{base_url_domain}}"
-					],
-					"path": [
-						"Appointment",
-						"GetAppointment",
-						""
-					],
-					"query": [
+			"name": "Registration",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
 						{
-							"key": "appointmentId",
-							"value": "1234ab6e-874e-4c64-aaa7-718c5819594e"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"access_token\", \"jsonData.accessToken\");\r",
+									"// if no environment the collection vars can be manipulated -->\r",
+									"pm.collectionVariables.set(\"access_token\", jsonData.accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"jurjur@jurjur\",\r\n  \"password\": \"JurJur6269#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/account/login",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"jurjur@jurjur\",\r\n  \"password\": \"JurJur6269#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/account/register",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "GetAllAppointments",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+			"name": "Info",
+			"item": [
+				{
+					"name": "CreateInfo",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base_url_domain}}/Appointment/GetAllAppointments/?userId=a5c9ed6d-874e-4c63-aea7-748b5708494c",
-					"host": [
-						"{{base_url_domain}}"
-					],
-					"path": [
-						"Appointment",
-						"GetAllAppointments",
-						""
-					],
-					"query": [
-						{
-							"key": "userId",
-							"value": "a5c9ed6d-874e-4c63-aea7-748b5708494c"
+				{
+					"name": "GetInfo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594e\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"GerbenHermanus\",\r\n  \"StickerId\": 1,\r\n  \"UserId\": \"a5c9ed6d-874e-4c63-aea7-748b5708494c\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base_url_domain}}/Appointment/SaveAppointment",
-					"host": [
-						"{{base_url_domain}}"
-					],
-					"path": [
-						"Appointment",
-						"SaveAppointment"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_domain}}/Info/DeleteInfo",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Info",
+								"DeleteInfo"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base_url_domain}}/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594e",
-					"host": [
-						"{{base_url_domain}}"
-					],
-					"path": [
-						"Appointment",
-						"DeleteAppointment",
-						""
-					],
-					"query": [
-						{
-							"key": "appointmentId",
-							"value": "1234ab6e-874e-4c64-aaa7-718c5819594e"
+				{
+					"name": "SaveInfo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"GerbenHermanus\",\r\n  \"nameDocter\": \"JoepHermanus\",\r\n  \"route\": true,\r\n  \"birthDay\": \"2025-03-22T00:00:00.000Z\",\r\n  \"avatarId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_domain}}/Info/SaveInfo",
+							"host": [
+								"{{base_url_domain}}"
+							],
+							"path": [
+								"Info",
+								"SaveInfo"
+							]
 						}
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -183,6 +343,11 @@
 		{
 			"key": "base_url_domain",
 			"value": "https://localhost:7257",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
 			"type": "string"
 		}
 	]

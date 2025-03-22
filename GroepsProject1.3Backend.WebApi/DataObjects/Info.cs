@@ -2,11 +2,11 @@
 {
     public class Info
     {
-        public string? UserId { get; set; }
+        public Guid UserId { get; set; }
         public string? Name { get; set; }
         public string? NameDocter { get; set; }
-        public bool Opperation { get; set; }
-        public DateOnly BirthDay { get; set; }
+        public bool Route { get; set; }
+        public DateTime BirthDay { get; set; }
         public int AvatarId { get; set; }
     }
 }
