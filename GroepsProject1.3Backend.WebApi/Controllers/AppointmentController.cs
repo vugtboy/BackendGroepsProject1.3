@@ -1,5 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+<<<<<<< Updated upstream
+=======
+using GroepsProject1._3Backend.WebApi.Services;
+using Microsoft.AspNetCore.Mvc;       
+using System;                      
+using System.Collections.Generic;    
+using System.Threading.Tasks;         
+>>>>>>> Stashed changes
 namespace GroepsProject1._3Backend.WebApi.Controllers
 {
     [ApiController]
@@ -8,23 +16,31 @@ namespace GroepsProject1._3Backend.WebApi.Controllers
     {
 
         private readonly IAppointmentRepository _repository;
-
-        public AppointmentController(IAppointmentRepository repository)
+        private readonly IAuthenticationService _authentication;
+        public AppointmentController(IAppointmentRepository repository, IAuthenticationService authentication)
         {
             _repository = repository;
+            _authentication = authentication;
         }
 
         [HttpGet("GetAllAppointments")]
+<<<<<<< Updated upstream
         public async Task<IEnumerable<Appointment>> GetAllAppointmentsAsync()
         {
             //todo userId ophalen
             string userId = null;
+=======
+        public async Task<IEnumerable<Appointment>> GetAllAppointments()
+        {
+            Guid userId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
+>>>>>>> Stashed changes
             return await _repository.GetAllAppointmentsAsync(userId);
         }
 
         [HttpPost("CreateAppointment")]
         public async Task<ActionResult> CreateAppointmentAsync(Appointment appointment)
         {
+            appointment.UserId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
             await _repository.CreateAppointmentAsync(appointment);
             return CreatedAtAction(nameof(GetAppointmentAsync), new { id = appointment.Id });
         }

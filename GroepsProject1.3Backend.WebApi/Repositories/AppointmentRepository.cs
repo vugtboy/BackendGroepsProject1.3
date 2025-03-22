@@ -39,6 +39,5 @@
             //todo appointment ophalen uit database
             return null;
         }
-
     }
 }

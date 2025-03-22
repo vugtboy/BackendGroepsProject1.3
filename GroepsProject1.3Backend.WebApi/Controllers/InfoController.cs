@@ -1,27 +1,69 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
+using GroepsProject1._3Backend.WebApi.Services;
+using Microsoft.AspNetCore.Mvc;       
+using System;                      
+using System.Collections.Generic;    
+using System.Threading.Tasks;         
 namespace GroepsProject1._3Backend.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class InfoController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         private readonly IInfoRepository _repository;
-
-        public InfoController(IInfoRepository repository)
+        private readonly IAuthenticationService _authentication;
+        public InfoController(IInfoRepository repository, IAuthenticationService authentication)
         {
             _repository = repository;
+            _authentication = authentication;
         }
 
-        [HttpGet(Name = "GetAllInfo")]
-        IEnumerable<Info> GetAllInfo()
+        [HttpGet("GetInfo")]
+        public async Task<IEnumerable<Info>> GetInfo()
         {
-            return null;
+            Guid userId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
+            return await _repository.GetInfo(userId);
+        }
+
+        [HttpPost("CreateInfo")]
+        public async Task<ActionResult> CreateInfo(Info info)
+        {
+            info.UserId = new Guid(_authentication.GetCurrentAuthenticatedUserId());
+            await _repository.CreateInfoAsync(info);
+
+            var createdAppointment = await _repository.GetInfoAsync(info.userId);
+            // Als de afspraak niet is aangemaakt een foutmelding geven
+            if (createdAppointment == null)
+            {
+                return BadRequest("Ja, mislukt, de afspraak is niet goed aangemaakt, pipo :P");
+            }
+            //Goed response teruggeven als het gelukt is
+            else
+            {
+                return CreatedAtAction(nameof(GetAppointment), new { appointmentId = appointment.Id }, appointment);
+            }           
+        }
+
+        [HttpPut("SaveAppointment")]
+        public async Task<ActionResult> SaveAppointment(Appointment appointment)
+        {            
+            await _repository.UpdateAppointmentAsync(appointment);
+            return Created();
+        }
+
+        [HttpDelete("DeleteAppointment")]
+        public async Task<ActionResult> DeleteAppointment(Guid appointmentId)
+        {
+            await _repository.DeleteAppointmentAsync(appointmentId);
+            return NoContent();
+        }
+
+        [HttpGet("GetAppointment")]
+        public async Task<Appointment?> GetAppointment(Guid appointmentId)
+        {
+            return await _repository.GetAppointmentAsync(appointmentId);
         }
     }
 }
