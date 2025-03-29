@@ -64,6 +64,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/", () => "Hello world, the API is up ");
 
+
 app.UseHttpsRedirection();
 
 app.MapControllers();
