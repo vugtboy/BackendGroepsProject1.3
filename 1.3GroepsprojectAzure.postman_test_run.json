@@ -1,0 +1,602 @@
+{
+	"id": "d22d670e-84fa-4fb4-842d-278b192beb46",
+	"name": "1.3GroepsprojectAzure",
+	"timestamp": "2025-04-01T23:10:31.877Z",
+	"collection_id": "41847521-ac4240d5-0303-471c-8382-754dac6c12f3",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 18,
+	"delay": "150",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-04-01T23:10:15.112Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "8e0a696f-b154-4ccf-bbc9-e78a471c7985",
+			"name": "Create Existing user",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 5205,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5205
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ef07811a-72e2-49be-9ab6-9e29d0545ca1",
+			"name": "PasswordIsLongerThan10Char",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 260,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should be 10 or more characters long": true
+			},
+			"testPassFailCounts": {
+				"Password should be 10 or more characters long": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				260
+			],
+			"allTests": [
+				{
+					"Password should be 10 or more characters long": true
+				}
+			]
+		},
+		{
+			"id": "a4a56eab-f0e9-4bab-bdb8-61667884a5ff",
+			"name": "PasswordNeedsLowercaseLetter",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 36,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain at least one lowercase letter": true
+			},
+			"testPassFailCounts": {
+				"Password should contain at least one lowercase letter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				36
+			],
+			"allTests": [
+				{
+					"Password should contain at least one lowercase letter": true
+				}
+			]
+		},
+		{
+			"id": "fef6e295-bac6-47e4-8bf7-5576f56d7cda",
+			"name": "PasswordNeedsUppercaseLetter",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 37,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain a uppercase letter": true
+			},
+			"testPassFailCounts": {
+				"Password should contain a uppercase letter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				37
+			],
+			"allTests": [
+				{
+					"Password should contain a uppercase letter": true
+				}
+			]
+		},
+		{
+			"id": "06c0d361-7cdb-4a3b-af81-52bb66befa7f",
+			"name": "PasswordNeedsDigit",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 358,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain a digit": true
+			},
+			"testPassFailCounts": {
+				"Password should contain a digit": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				358
+			],
+			"allTests": [
+				{
+					"Password should contain a digit": true
+				}
+			]
+		},
+		{
+			"id": "ad3a8892-7ba8-42a6-8da2-47ac84830030",
+			"name": "PasswordNeedsNonAlphanumeric",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 33,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain a non alphanumeric character": true
+			},
+			"testPassFailCounts": {
+				"Password should contain a non alphanumeric character": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Password should contain a non alphanumeric character": true
+				}
+			]
+		},
+		{
+			"id": "250c0ad0-432a-4b8f-81e4-905254e2b3fe",
+			"name": "EmailMustBeUnique Copy",
+			"url": "avansict22268840123.azurewebsites.net/account/register",
+			"time": 3035,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Unique email": true
+			},
+			"testPassFailCounts": {
+				"Unique email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3035
+			],
+			"allTests": [
+				{
+					"Unique email": true
+				}
+			]
+		},
+		{
+			"id": "806ed3b7-99f3-4064-af3f-c1ac0189724e",
+			"name": "WrongCredentials",
+			"url": "avansict22268840123.azurewebsites.net/account/login",
+			"time": 2278,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Unique password": true
+			},
+			"testPassFailCounts": {
+				"Unique password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2278
+			],
+			"allTests": [
+				{
+					"Unique password": true
+				}
+			]
+		},
+		{
+			"id": "361b1986-1026-4b4b-a777-8658e6790cda",
+			"name": "WrongCredentials1",
+			"url": "avansict22268840123.azurewebsites.net/account/login",
+			"time": 37,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Unique password": true
+			},
+			"testPassFailCounts": {
+				"Unique password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				37
+			],
+			"allTests": [
+				{
+					"Unique password": true
+				}
+			]
+		},
+		{
+			"id": "6ac3a017-825e-4733-8e21-29c8e2e86be8",
+			"name": "RightCredentials",
+			"url": "avansict22268840123.azurewebsites.net/account/login",
+			"time": 197,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can log in": true
+			},
+			"testPassFailCounts": {
+				"can log in": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				197
+			],
+			"allTests": [
+				{
+					"can log in": true
+				}
+			]
+		},
+		{
+			"id": "2535f3a3-56cc-48e9-8b9c-aef105d1bd80",
+			"name": "CreateNewAppointment",
+			"url": "avansict22268840123.azurewebsites.net/Appointment/CreateAppointment",
+			"time": 222,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"can create appointment": true
+			},
+			"testPassFailCounts": {
+				"can create appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				222
+			],
+			"allTests": [
+				{
+					"can create appointment": true
+				}
+			]
+		},
+		{
+			"id": "9b1bf0fa-33c2-44fc-a762-fcd390c88107",
+			"name": "GetAppointment",
+			"url": "avansict22268840123.azurewebsites.net/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+			"time": 219,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can read appointment": true
+			},
+			"testPassFailCounts": {
+				"can read appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				219
+			],
+			"allTests": [
+				{
+					"can read appointment": true
+				}
+			]
+		},
+		{
+			"id": "5d25ac06-6aec-4a84-98f3-62e98182829c",
+			"name": "GetAllAppointments",
+			"url": "avansict22268840123.azurewebsites.net/Appointment/GetAllAppointments",
+			"time": 31,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can read all appointments": true
+			},
+			"testPassFailCounts": {
+				"can read all appointments": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"can read all appointments": true
+				}
+			]
+		},
+		{
+			"id": "91de63dd-7056-4856-8496-16a5c18fdac9",
+			"name": "SaveAppointment",
+			"url": "avansict22268840123.azurewebsites.net/Appointment/SaveAppointment",
+			"time": 40,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can update appointment": true
+			},
+			"testPassFailCounts": {
+				"can update appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"can update appointment": true
+				}
+			]
+		},
+		{
+			"id": "58afc9d1-7a5e-44a2-b540-e36a7472fe0a",
+			"name": "DeleteAppointment",
+			"url": "avansict22268840123.azurewebsites.net/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+			"time": 107,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can delete appointment": true
+			},
+			"testPassFailCounts": {
+				"can delete appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				107
+			],
+			"allTests": [
+				{
+					"can delete appointment": true
+				}
+			]
+		},
+		{
+			"id": "e5518e5b-f561-4e3c-919a-c69980991da3",
+			"name": "CreateInfo",
+			"url": "avansict22268840123.azurewebsites.net/Info/CreateInfo",
+			"time": 52,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"can create": true
+			},
+			"testPassFailCounts": {
+				"can create": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"can create": true
+				}
+			]
+		},
+		{
+			"id": "02bac7c8-06f0-425f-aff9-e7692432ebd2",
+			"name": "GetInfo",
+			"url": "avansict22268840123.azurewebsites.net/Info/GetInfo",
+			"time": 49,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can read info": true
+			},
+			"testPassFailCounts": {
+				"can read info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"can read info": true
+				}
+			]
+		},
+		{
+			"id": "3ae4e187-c051-470c-908a-7fbbe87214fa",
+			"name": "SaveInfo",
+			"url": "avansict22268840123.azurewebsites.net/Info/SaveInfo",
+			"time": 93,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can change Info": true
+			},
+			"testPassFailCounts": {
+				"can change Info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"can change Info": true
+				}
+			]
+		},
+		{
+			"id": "23ecad18-9fae-4d50-a225-856c4fc3e58e",
+			"name": "DeleteInfo",
+			"url": "avansict22268840123.azurewebsites.net/Info/DeleteInfo",
+			"time": 70,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can delete Info": true
+			},
+			"testPassFailCounts": {
+				"can delete Info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				70
+			],
+			"allTests": [
+				{
+					"can delete Info": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 12359,
+	"collection": {
+		"requests": [
+			{
+				"id": "8e0a696f-b154-4ccf-bbc9-e78a471c7985",
+				"method": "POST"
+			},
+			{
+				"id": "ef07811a-72e2-49be-9ab6-9e29d0545ca1",
+				"method": "POST"
+			},
+			{
+				"id": "a4a56eab-f0e9-4bab-bdb8-61667884a5ff",
+				"method": "POST"
+			},
+			{
+				"id": "fef6e295-bac6-47e4-8bf7-5576f56d7cda",
+				"method": "POST"
+			},
+			{
+				"id": "06c0d361-7cdb-4a3b-af81-52bb66befa7f",
+				"method": "POST"
+			},
+			{
+				"id": "ad3a8892-7ba8-42a6-8da2-47ac84830030",
+				"method": "POST"
+			},
+			{
+				"id": "250c0ad0-432a-4b8f-81e4-905254e2b3fe",
+				"method": "POST"
+			},
+			{
+				"id": "806ed3b7-99f3-4064-af3f-c1ac0189724e",
+				"method": "POST"
+			},
+			{
+				"id": "361b1986-1026-4b4b-a777-8658e6790cda",
+				"method": "POST"
+			},
+			{
+				"id": "6ac3a017-825e-4733-8e21-29c8e2e86be8",
+				"method": "POST"
+			},
+			{
+				"id": "2535f3a3-56cc-48e9-8b9c-aef105d1bd80",
+				"method": "POST"
+			},
+			{
+				"id": "9b1bf0fa-33c2-44fc-a762-fcd390c88107",
+				"method": "GET"
+			},
+			{
+				"id": "5d25ac06-6aec-4a84-98f3-62e98182829c",
+				"method": "GET"
+			},
+			{
+				"id": "91de63dd-7056-4856-8496-16a5c18fdac9",
+				"method": "PUT"
+			},
+			{
+				"id": "58afc9d1-7a5e-44a2-b540-e36a7472fe0a",
+				"method": "DELETE"
+			},
+			{
+				"id": "e5518e5b-f561-4e3c-919a-c69980991da3",
+				"method": "POST"
+			},
+			{
+				"id": "02bac7c8-06f0-425f-aff9-e7692432ebd2",
+				"method": "GET"
+			},
+			{
+				"id": "3ae4e187-c051-470c-908a-7fbbe87214fa",
+				"method": "PUT"
+			},
+			{
+				"id": "23ecad18-9fae-4d50-a225-856c4fc3e58e",
+				"method": "DELETE"
+			}
+		]
+	}
+}

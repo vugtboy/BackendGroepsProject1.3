@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "161896d6-b825-4b8a-aa4e-e00d41f37206",
-		"name": "1.3GroepsprojectLocal",
+		"_postman_id": "ac4240d5-0303-471c-8382-754dac6c12f3",
+		"name": "1.3GroepsprojectAzure",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "41847521"
 	},
@@ -447,6 +447,20 @@
 			"item": [
 				{
 					"name": "CreateNewAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can create appointment\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -474,11 +488,37 @@
 				},
 				{
 					"name": "GetAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can read appointment\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594e",
+							"raw": "{{baseUrl}}/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -490,7 +530,7 @@
 							"query": [
 								{
 									"key": "appointmentId",
-									"value": "1234ab6e-874e-4c64-aaa7-718c5819594e"
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594b"
 								}
 							]
 						}
@@ -499,6 +539,20 @@
 				},
 				{
 					"name": "GetAllAppointments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can read all appointments\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -529,12 +583,26 @@
 				},
 				{
 					"name": "SaveAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can update appointment\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594e\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"GerbenHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594b\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"GerbenHermanus\",\r\n  \"StickerId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -556,6 +624,20 @@
 				},
 				{
 					"name": "DeleteAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can delete appointment\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -569,7 +651,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594e",
+							"raw": "{{baseUrl}}/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -581,7 +663,7 @@
 							"query": [
 								{
 									"key": "appointmentId",
-									"value": "1234ab6e-874e-4c64-aaa7-718c5819594e"
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594b"
 								}
 							]
 						}
@@ -595,9 +677,32 @@
 			"item": [
 				{
 					"name": "CreateInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can create\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"BirthDay\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"NameDocter\": \"MikeHermanus\",\r\n  \"AvatarId\": 1,\r\n  \"Route\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/Info/CreateInfo",
 							"host": [
@@ -613,6 +718,20 @@
 				},
 				{
 					"name": "GetInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can read info\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -642,25 +761,21 @@
 					"response": []
 				},
 				{
-					"name": "DeleteInfo",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/Info/DeleteInfo",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"Info",
-								"DeleteInfo"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "SaveInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can change Info\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -681,6 +796,47 @@
 							"path": [
 								"Info",
 								"SaveInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can delete Info\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/DeleteInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"DeleteInfo"
 							]
 						}
 					},
@@ -724,7 +880,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "https://localhost:7257",
+			"value": "avansict22268840123.azurewebsites.net",
 			"type": "string"
 		},
 		{

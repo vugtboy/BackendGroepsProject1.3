@@ -1,0 +1,602 @@
+{
+	"id": "7bff2f9d-9e1f-426b-8b9d-de553836cded",
+	"name": "1.3GroepsprojectLocal",
+	"timestamp": "2025-04-01T23:07:08.117Z",
+	"collection_id": "41847521-161896d6-b825-4b8a-aa4e-e00d41f37206",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 18,
+	"delay": "50",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-04-01T23:07:04.731Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "29f364bf-0377-4cbd-90c1-91f628c6f660",
+			"name": "Create Existing user",
+			"url": "https://localhost:7257/account/register",
+			"time": 114,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				114
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c69afc8e-d022-4624-b1e7-6bf4dbeef878",
+			"name": "PasswordIsLongerThan10Char",
+			"url": "https://localhost:7257/account/register",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should be 10 or more characters long": true
+			},
+			"testPassFailCounts": {
+				"Password should be 10 or more characters long": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Password should be 10 or more characters long": true
+				}
+			]
+		},
+		{
+			"id": "da053af3-417d-4014-8b0f-804ee357e771",
+			"name": "PasswordNeedsLowercaseLetter",
+			"url": "https://localhost:7257/account/register",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain at least one lowercase letter": true
+			},
+			"testPassFailCounts": {
+				"Password should contain at least one lowercase letter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Password should contain at least one lowercase letter": true
+				}
+			]
+		},
+		{
+			"id": "6b514a13-e79e-43b9-8741-4c94c6662b67",
+			"name": "PasswordNeedsUppercaseLetter",
+			"url": "https://localhost:7257/account/register",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain a uppercase letter": true
+			},
+			"testPassFailCounts": {
+				"Password should contain a uppercase letter": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Password should contain a uppercase letter": true
+				}
+			]
+		},
+		{
+			"id": "2ec5dd40-08c4-41d3-ac27-473e27f7c410",
+			"name": "PasswordNeedsDigit",
+			"url": "https://localhost:7257/account/register",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain a digit": true
+			},
+			"testPassFailCounts": {
+				"Password should contain a digit": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Password should contain a digit": true
+				}
+			]
+		},
+		{
+			"id": "7c236a32-5aa1-49f8-abaf-4350a10aff9a",
+			"name": "PasswordNeedsNonAlphanumeric",
+			"url": "https://localhost:7257/account/register",
+			"time": 2,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Password should contain a non alphanumeric character": true
+			},
+			"testPassFailCounts": {
+				"Password should contain a non alphanumeric character": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Password should contain a non alphanumeric character": true
+				}
+			]
+		},
+		{
+			"id": "baf5bc7d-5a43-4784-ab60-185beb2708e4",
+			"name": "EmailMustBeUnique Copy",
+			"url": "https://localhost:7257/account/register",
+			"time": 77,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Unique email": true
+			},
+			"testPassFailCounts": {
+				"Unique email": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"Unique email": true
+				}
+			]
+		},
+		{
+			"id": "1d8b3de2-6155-496a-adfa-71db6fc2adc5",
+			"name": "WrongCredentials",
+			"url": "https://localhost:7257/account/login",
+			"time": 71,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Unique password": true
+			},
+			"testPassFailCounts": {
+				"Unique password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				71
+			],
+			"allTests": [
+				{
+					"Unique password": true
+				}
+			]
+		},
+		{
+			"id": "b00028f9-2f8b-4375-97cc-2ec5d60dc0a1",
+			"name": "WrongCredentials1",
+			"url": "https://localhost:7257/account/login",
+			"time": 4,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Unique password": true
+			},
+			"testPassFailCounts": {
+				"Unique password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Unique password": true
+				}
+			]
+		},
+		{
+			"id": "b9097654-1781-473c-bd02-d21bc0a40859",
+			"name": "RightCredentials",
+			"url": "https://localhost:7257/account/login",
+			"time": 86,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can log in": true
+			},
+			"testPassFailCounts": {
+				"can log in": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				86
+			],
+			"allTests": [
+				{
+					"can log in": true
+				}
+			]
+		},
+		{
+			"id": "910c3533-f282-41d1-a974-c586c7fd957f",
+			"name": "CreateNewAppointment",
+			"url": "https://localhost:7257/Appointment/CreateAppointment",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"can create appointment": true
+			},
+			"testPassFailCounts": {
+				"can create appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"can create appointment": true
+				}
+			]
+		},
+		{
+			"id": "a3e59948-0075-46b5-9fb7-3b010511aa9e",
+			"name": "GetAppointment",
+			"url": "https://localhost:7257/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can read appointment": true
+			},
+			"testPassFailCounts": {
+				"can read appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"can read appointment": true
+				}
+			]
+		},
+		{
+			"id": "e1767bbd-0c7d-4437-95b0-280406580951",
+			"name": "GetAllAppointments",
+			"url": "https://localhost:7257/Appointment/GetAllAppointments",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can read all appointments": true
+			},
+			"testPassFailCounts": {
+				"can read all appointments": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"can read all appointments": true
+				}
+			]
+		},
+		{
+			"id": "078b31e5-8bb6-4a09-bc90-2ff3a38468c1",
+			"name": "SaveAppointment",
+			"url": "https://localhost:7257/Appointment/SaveAppointment",
+			"time": 6,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can update appointment": true
+			},
+			"testPassFailCounts": {
+				"can update appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"can update appointment": true
+				}
+			]
+		},
+		{
+			"id": "d5678ddb-c090-4e82-b76d-e86f5009e23e",
+			"name": "DeleteAppointment",
+			"url": "https://localhost:7257/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+			"time": 5,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can delete appointment": true
+			},
+			"testPassFailCounts": {
+				"can delete appointment": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"can delete appointment": true
+				}
+			]
+		},
+		{
+			"id": "fd56ef9e-6a84-455d-9c31-e18a4e21e489",
+			"name": "CreateInfo",
+			"url": "https://localhost:7257/Info/CreateInfo",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"can create": true
+			},
+			"testPassFailCounts": {
+				"can create": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"can create": true
+				}
+			]
+		},
+		{
+			"id": "0fbe9cda-f650-49a2-b475-8a7b5afd96ba",
+			"name": "GetInfo",
+			"url": "https://localhost:7257/Info/GetInfo",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"can read info": true
+			},
+			"testPassFailCounts": {
+				"can read info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"can read info": true
+				}
+			]
+		},
+		{
+			"id": "914b4296-8040-4570-9215-18df85f98ca3",
+			"name": "SaveInfo",
+			"url": "https://localhost:7257/Info/SaveInfo",
+			"time": 5,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can change Info": true
+			},
+			"testPassFailCounts": {
+				"can change Info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"can change Info": true
+				}
+			]
+		},
+		{
+			"id": "f99503cf-0214-4f5a-9238-c75ec50afbb7",
+			"name": "DeleteInfo",
+			"url": "https://localhost:7257/Info/DeleteInfo",
+			"time": 8,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"can delete Info": true
+			},
+			"testPassFailCounts": {
+				"can delete Info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"can delete Info": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 418,
+	"collection": {
+		"requests": [
+			{
+				"id": "29f364bf-0377-4cbd-90c1-91f628c6f660",
+				"method": "POST"
+			},
+			{
+				"id": "c69afc8e-d022-4624-b1e7-6bf4dbeef878",
+				"method": "POST"
+			},
+			{
+				"id": "da053af3-417d-4014-8b0f-804ee357e771",
+				"method": "POST"
+			},
+			{
+				"id": "6b514a13-e79e-43b9-8741-4c94c6662b67",
+				"method": "POST"
+			},
+			{
+				"id": "2ec5dd40-08c4-41d3-ac27-473e27f7c410",
+				"method": "POST"
+			},
+			{
+				"id": "7c236a32-5aa1-49f8-abaf-4350a10aff9a",
+				"method": "POST"
+			},
+			{
+				"id": "baf5bc7d-5a43-4784-ab60-185beb2708e4",
+				"method": "POST"
+			},
+			{
+				"id": "1d8b3de2-6155-496a-adfa-71db6fc2adc5",
+				"method": "POST"
+			},
+			{
+				"id": "b00028f9-2f8b-4375-97cc-2ec5d60dc0a1",
+				"method": "POST"
+			},
+			{
+				"id": "b9097654-1781-473c-bd02-d21bc0a40859",
+				"method": "POST"
+			},
+			{
+				"id": "910c3533-f282-41d1-a974-c586c7fd957f",
+				"method": "POST"
+			},
+			{
+				"id": "a3e59948-0075-46b5-9fb7-3b010511aa9e",
+				"method": "GET"
+			},
+			{
+				"id": "e1767bbd-0c7d-4437-95b0-280406580951",
+				"method": "GET"
+			},
+			{
+				"id": "078b31e5-8bb6-4a09-bc90-2ff3a38468c1",
+				"method": "PUT"
+			},
+			{
+				"id": "d5678ddb-c090-4e82-b76d-e86f5009e23e",
+				"method": "DELETE"
+			},
+			{
+				"id": "fd56ef9e-6a84-455d-9c31-e18a4e21e489",
+				"method": "POST"
+			},
+			{
+				"id": "0fbe9cda-f650-49a2-b475-8a7b5afd96ba",
+				"method": "GET"
+			},
+			{
+				"id": "914b4296-8040-4570-9215-18df85f98ca3",
+				"method": "PUT"
+			},
+			{
+				"id": "f99503cf-0214-4f5a-9238-c75ec50afbb7",
+				"method": "DELETE"
+			}
+		]
+	}
+}
