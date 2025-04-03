@@ -1,0 +1,1299 @@
+{
+	"info": {
+		"_postman_id": "5ee43ebc-a6f1-48ef-8759-6c69f7eb44ec",
+		"name": "1.3GroepsprojectAzure2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41993217"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "Create Existing user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{Mail}}\",\r\n    \"password\":\"a1asdfghjkfB!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registreren",
+			"item": [
+				{
+					"name": "PasswordIsLongerThan10Char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Password should be 10 or more characters long\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.PasswordTooShort[0]).to.eql(\"Passwords must be at least 10 characters.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"a1B!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PasswordNeedsLowercaseLetter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Password should contain at least one lowercase letter\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.PasswordRequiresLower[0]).to.eql(\"Passwords must have at least one lowercase ('a'-'z').\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"A1BEIOSLJAJCHDKD!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PasswordNeedsUppercaseLetter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Password should contain a uppercase letter\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.PasswordRequiresUpper[0]).to.eql(\"Passwords must have at least one uppercase ('A'-'Z').\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"sdisadiadad1b!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PasswordNeedsDigit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Password should contain a digit\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.PasswordRequiresDigit[0]).to.eql(\"Passwords must have at least one digit ('0'-'9').\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"andsnddmAAB!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PasswordNeedsNonAlphanumeric",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Password should contain a non alphanumeric character\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.PasswordRequiresNonAlphanumeric[0]).to.eql(\"Passwords must have at least one non alphanumeric character.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"a1BdsadAAedb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EmailMustBeUnique Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Unique email\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"a1asdfghjkfB!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Info Before Login",
+			"item": [
+				{
+					"name": "CreateInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint create info\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"BirthDay\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"NameDocter\": \"MikeHermanus\",\r\n  \"AvatarId\": 1,\r\n  \"Route\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/CreateInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"CreateInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint get info\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/GetInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"GetInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint save info\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"GerbenHermanus\",\r\n  \"nameDocter\": \"JoepHermanus\",\r\n  \"route\": true,\r\n  \"birthDay\": \"2025-03-22T00:00:00.000Z\",\r\n  \"avatarId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/SaveInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"SaveInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint delete info\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/DeleteInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"DeleteInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AppointmentBeforeLogin",
+			"item": [
+				{
+					"name": "CreateNewAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint create appointment\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594b\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/CreateAppointment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"CreateAppointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint create appointment\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"GetAppointment",
+								""
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllAppointments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint create appointment\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/GetAllAppointments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"GetAllAppointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint create appointment\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594b\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"GerbenHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/SaveAppointment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"SaveAppointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"cannot acces secured endpoint create appointment\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"DeleteAppointment",
+								""
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InlogTest",
+			"item": [
+				{
+					"name": "WrongCredentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Unique password\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{Mail}}\",\r\n    \"password\":\"a1asdhihifoutfghjkfB!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WrongCredentials1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Unique password\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"existing@hihifout.nl\",\r\n    \"password\":\"a1asdhihifoutfghjkfB!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RightCredentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can log in\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var jsonData = pm.response.json()\r",
+									"    pm.expect(jsonData.accessToken).to.exist;\r",
+									"    pm.collectionVariables.set(\"access_token\", jsonData.accessToken);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{Mail}}\",\r\n    \"password\":\"a1asdfghjkfB!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/account/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "CreateNewAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can create appointment\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594b\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/CreateAppointment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"CreateAppointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can read appointment\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/GetAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"GetAppointment",
+								""
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllAppointments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can read all appointments\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/GetAllAppointments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"GetAllAppointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can update appointment\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"1234ab6e-874e-4c64-aaa7-718c5819594b\",\r\n  \"Date\": \"2025-03-19\",\r\n  \"Name\": \"GerbenHermanus\",\r\n  \"StickerId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/SaveAppointment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"SaveAppointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAppointment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can delete appointment\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Appointment/DeleteAppointment/?appointmentId=1234ab6e-874e-4c64-aaa7-718c5819594b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Appointment",
+								"DeleteAppointment",
+								""
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "1234ab6e-874e-4c64-aaa7-718c5819594b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Info",
+			"item": [
+				{
+					"name": "CreateInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can create\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"BirthDay\": \"2025-03-19\",\r\n  \"Name\": \"MikeHermanus\",\r\n  \"NameDocter\": \"MikeHermanus\",\r\n  \"AvatarId\": 1,\r\n  \"Route\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/CreateInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"CreateInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can read info\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/GetInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"GetInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can change Info\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"GerbenHermanus\",\r\n  \"nameDocter\": \"JoepHermanus\",\r\n  \"route\": true,\r\n  \"birthDay\": \"2025-03-22T00:00:00.000Z\",\r\n  \"avatarId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/SaveInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"SaveInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"can delete Info\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Info/DeleteInfo",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Info",
+								"DeleteInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "avansict22268840123.azurewebsites.net",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Mail",
+			"value": "Hassan@Hassan2",
+			"type": "string"
+		}
+	]
+}
